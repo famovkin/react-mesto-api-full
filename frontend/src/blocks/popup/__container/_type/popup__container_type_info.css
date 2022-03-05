@@ -1,0 +1,15 @@
+.popup__container_type_info {
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 10px;
+  margin: auto;
+  padding: 60px 36px;
+  text-align: center;
+}
+
+@media (max-width: 470px) {
+  .popup__container_type_info {
+    width: calc(100% - 40px);
+    padding: 50px 18px;
+  }
+}

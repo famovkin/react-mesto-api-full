@@ -1,0 +1,9 @@
+.form-section {
+  padding-top: 23px;
+}
+
+@media (max-width: 425px) {
+  .form-section {
+    padding-top: 0;
+  }
+}

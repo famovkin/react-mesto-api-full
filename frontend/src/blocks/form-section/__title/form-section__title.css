@@ -1,0 +1,15 @@
+.form-section__title {
+  color: white;
+  font-weight: 900;
+  line-height: 29px;
+  margin: 0 0 37px;
+}
+
+@media (max-width: 425px) {
+  .form-section__title {
+    padding-top: 0;
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 27px;
+  }
+}

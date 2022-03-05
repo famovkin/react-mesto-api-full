@@ -1,0 +1,13 @@
+.popup__title_type_info {
+  margin: 0;
+  width: 100%;
+  margin: auto;
+  display: block;
+}
+
+@media (max-width: 470px) {
+  .popup__title_type_info {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}

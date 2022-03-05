@@ -1,0 +1,26 @@
+.form-section__button {
+  color: #000;
+  background: #fff;
+  border: none;
+  outline: none;
+  padding: 14px 0;
+  width: 100%;
+  border-radius: 2px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 22px;
+  transition: opacity 0.2s ease-out;
+}
+
+.form-section__button:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 425px) {
+  .form-section__button {
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 20px;
+  }
+}

@@ -1,0 +1,22 @@
+.form-section__input {
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid #cccccc;
+  padding: 13px 0;
+  width: 100%;
+  color: #fff;
+  margin-bottom: 17px;
+  outline: none;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.form-section__input:last-of-type {
+  margin-bottom: 216px;
+}
+
+@media (max-width: 425px) {
+  .form-section__input:last-of-type {
+    margin-bottom: 173px;
+  }
+}

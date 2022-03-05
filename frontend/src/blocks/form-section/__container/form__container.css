@@ -1,0 +1,10 @@
+.form-section__container {
+  width: 358px;
+  margin: auto;
+}
+
+@media (max-width: 425px) {
+  .form-section__container {
+    width: calc(100% - 60px);
+  }
+}

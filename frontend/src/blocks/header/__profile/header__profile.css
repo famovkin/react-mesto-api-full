@@ -1,0 +1,6 @@
+.header__profile {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}

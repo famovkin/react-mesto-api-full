@@ -1,0 +1,5 @@
+@media (max-width: 768px) {
+  .header__profile_type_logged {
+    display: none;
+  }
+}

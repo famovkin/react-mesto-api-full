@@ -1,0 +1,33 @@
+.card__like-button {
+  background-image: url(../../../images/disliked-button.svg);
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  margin-bottom: 3px;
+  width: 22px;
+  height: 19px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: opacity .5s;
+  cursor: pointer;
+}
+
+.card__like-button:hover {
+  opacity: .5;
+}
+
+@media (max-width: 630px) {
+  .card__like-button {
+    width: 32px;
+    height: 27px;
+  }
+}
+
+@media (max-width: 425px) {
+  .card__like-button {
+    width: 22px;
+    height: 19px;
+  }
+}
+
