@@ -9,6 +9,11 @@ const validateURL = require('../utils/validateURL');
 
 const routes = express.Router();
 
+routes.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 routes.post('/signin', express.json(), celebrate({
   body: Joi.object().keys({
     email: Joi.string().email().required(),
