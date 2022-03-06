@@ -1,11 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
+const cors = require('cors');
 
 const { PORT = 3001 } = process.env;
 const app = express();
 const routes = require('./routes');
 
+app.use(cors());
 app.use(routes);
 app.use(errors());
 app.use((err, req, res, next) => {
