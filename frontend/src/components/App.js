@@ -38,31 +38,33 @@ function App() {
   const [loggedIn, setloggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const history = useHistory();
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
-      .then(([userData, cardsData]) => {
-        setCurrentUser(userData);
-        setCards(cardsData);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+    if (loggedIn) {
+      Promise.all([api.getUserInfo(token), api.getInitialCards(token)])
+        .then(([userData, cardsData]) => {
+          setCurrentUser(userData[0]);
+          setCards(cardsData);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [loggedIn, token]);
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      const token = localStorage.getItem("token");
+    if (token) {
       auth
         .getContent(token)
         .then((response) => {
           if (response) {
             setloggedIn(true);
-            setEmail(response.data.email);
+            setEmail(response[0].email);
             history.push("/");
           }
         })
         .catch((e) => console.log(e));
     }
-  }, [history, loggedIn]);
+  }, [history, loggedIn, token]);
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -95,7 +97,7 @@ function App() {
   function handleUpdateUser(userDataFromForm) {
     setIsLoading(true);
     api
-      .editUserInfo(userDataFromForm)
+      .editUserInfo(userDataFromForm, token)
       .then((userDataUpdated) => {
         setCurrentUser({
           ...userDataUpdated,
@@ -111,7 +113,7 @@ function App() {
   function handleUpdateAvatar(avatarLink) {
     setIsLoading(true);
     api
-      .updateProfileAvatar(avatarLink)
+      .updateProfileAvatar(avatarLink, token)
       .then((userDataUpdated) => {
         setCurrentUser({
           ...userDataUpdated,
@@ -127,7 +129,7 @@ function App() {
     const isLiked = card.likes.some((like) => like._id === currentUser._id);
 
     api
-      .changeLikeCardStatus(card._id, !isLiked)
+      .changeLikeCardStatus(card._id, !isLiked, token)
       .then((newCard) => {
         setCards((state) =>
           state.map((c) => (c._id === card._id ? newCard : c))
@@ -144,7 +146,7 @@ function App() {
   function handleCardDelete() {
     setIsLoading(true);
     api
-      .deleteCard(deletedCard._id)
+      .deleteCard(deletedCard._id, token)
       .then(() => {
         setCards((state) => state.filter((c) => c._id !== deletedCard._id));
         closeAllPopups();
@@ -156,7 +158,7 @@ function App() {
   function handleAddPlaceSubmit(newCardData) {
     setIsLoading(true);
     api
-      .addNewCard(newCardData)
+      .addNewCard(newCardData, token)
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
