@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const cors = require('cors');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 require('dotenv').config();
 
 const { PORT = 3001 } = process.env;
@@ -9,7 +10,9 @@ const app = express();
 const routes = require('./routes');
 
 app.use(cors());
+app.use(requestLogger);
 app.use(routes);
+app.use(errorLogger);
 app.use(errors());
 app.use((err, req, res, next) => {
   const { statusCode = 500, message } = err;
