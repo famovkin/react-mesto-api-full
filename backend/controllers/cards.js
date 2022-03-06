@@ -13,7 +13,7 @@ const {
 module.exports.getCards = async (req, res, next) => {
   try {
     const cards = await Card.find({}).populate(['owner', 'likes']);
-    res.status(OK_CODE).send(cards);
+    res.status(OK_CODE).send(cards.reverse());
   } catch (err) {
     next(new ServerError('Произошла ошибка'));
   }
@@ -60,7 +60,8 @@ module.exports.addLikeCard = async (req, res, next) => {
       req.params.cardId,
       { $addToSet: { likes: id } }, // добавить _id в массив, если его там нет
       { new: true },
-    );
+    ).populate(['owner', 'likes']);
+
     if (updatedCardInfo) {
       res.status(OK_CODE).send(updatedCardInfo);
     } else {
@@ -85,7 +86,8 @@ module.exports.removeLikeCard = async (req, res, next) => {
       req.params.cardId,
       { $pull: { likes: id } },
       { new: true },
-    );
+    ).populate(['owner', 'likes']);
+
     if (updatedCardInfo) {
       res.status(OK_CODE).send(updatedCardInfo);
     } else {
