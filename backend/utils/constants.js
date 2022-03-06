@@ -9,9 +9,6 @@ const DUPLICATE_CODE = 409;
 const MONGO_DUPLICATE_ERROR_CODE = 11000;
 const SALT_ROUND = 10;
 
-const NODE_ENV = 'production';
-const JWT_SECRET = 'b688b88106945b0567e2c591f95d29feca922b7649db354b1ab448f12e44424e';
-
 module.exports = {
   OK_CODE,
   CREATED_CODE,
@@ -23,6 +20,4 @@ module.exports = {
   SALT_ROUND,
   AUTH_CODE,
   FORBIDDEN_CODE,
-  NODE_ENV,
-  JWT_SECRET,
 };

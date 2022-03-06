@@ -13,9 +13,9 @@ const {
   CREATED_CODE,
   MONGO_DUPLICATE_ERROR_CODE,
   SALT_ROUND,
-  NODE_ENV,
-  JWT_SECRET,
 } = require('../utils/constants');
+
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 module.exports.getUsers = async (req, res, next) => {
   try {
