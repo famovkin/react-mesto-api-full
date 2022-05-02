@@ -5,7 +5,7 @@ const cors = require('cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 require('dotenv').config();
 
-const { PORT = 3000 } = process.env;
+const { PORT } = process.env;
 const app = express();
 const routes = require('./routes');
 
@@ -28,7 +28,7 @@ app.use((err, req, res, next) => {
 });
 
 async function startApp() {
-  await mongoose.connect('mongodb://localhost:27017/mestodb');
+  await mongoose.connect(process.env.DATABASE_URL);
   // подключение к бд
   await app.listen(PORT, () => {
     // eslint-disable-next-line no-console

@@ -1,4 +1,4 @@
-export const BASE_URL = "https://api.mesto-backend.nomoredomains.work";
+export const BASE_URL = "https://mesto-api.herokuapp.com";
 
 const checkServerResponse = (res) => {
   if (res.ok) {

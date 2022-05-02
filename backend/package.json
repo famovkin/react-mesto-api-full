@@ -2,6 +2,9 @@
   "name": "express-mesto",
   "version": "1.0.0",
   "description": "Сервер для проекта Mesto на Express",
+  "engines": {
+    "node": "v16.13.2"
+  },
   "main": "app.js",
   "scripts": {
     "lint": "npx eslint .",
