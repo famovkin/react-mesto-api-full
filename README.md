@@ -29,5 +29,5 @@ Mesto — сервис, куда можно добавлять фотограф�
 - контроль версий в Git с использованием веток.
 
 ## Ссылки:
-URL фронта: https://mesto.nomoredomains.xyz  
-URL бэка: https://api.mesto-backend.nomoredomains.work
+- URL фронта: https://famovkin.github.io/react-mesto-api-full/
+- URL бэка: https://mesto-api.herokuapp.com/
